@@ -18,7 +18,7 @@
     </div>
 
     <div class="mt-2 flex flex-col space-y-6 overflow-scroll">
-      <div v-for="post in filteredPosts">
+      <div v-for="(post, index) in filteredPosts" v-bind:key="index">
         <Post :the-post="post" :view-type="'FAVOURITEPOSTS'" @refresh="updateView"/>
       </div>
     </div>

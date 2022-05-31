@@ -102,7 +102,7 @@
 
     <!--COMMENTS-->
     <div class="w-full max-h-36 overflow-y-auto">
-      <div v-for="comment in _.sortBy(thePost.comments,['date']).reverse()">
+      <div v-for="(comment, index) in _.sortBy(thePost.comments,['date']).reverse()" v-bind:key="index">
         <Comment :the-comment="comment"/>
       </div>
     </div>

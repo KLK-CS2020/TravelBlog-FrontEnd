@@ -32,7 +32,7 @@
     </div>
 
     <div class="mt-2 flex flex-col space-y-6 overflow-scroll">
-      <div v-for="post in filteredPosts">
+      <div v-for="(post, index) in filteredPosts" v-bind:key="index">
         <Post :the-post="post" :view-type="'MYPOSTS'" @refresh="updateView" />
       </div>
     </div>
@@ -43,7 +43,7 @@
 import { SearchIcon, SortAscendingIcon, XIcon } from "@heroicons/vue/outline";
 import Post from "@/components/Post.vue";
 import SortMenu from "@/components/SortMenu.vue";
-import { PostService } from "@/services/PostService";
+import type { PostService } from "@/services/PostService";
 import { NotificationsStore } from "@/stores/notifications";
 import { computed, inject, ref } from "vue";
 import * as _ from "underscore";

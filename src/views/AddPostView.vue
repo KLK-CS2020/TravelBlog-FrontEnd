@@ -89,9 +89,8 @@
 <script setup lang="ts">
 import { LocationMarkerIcon } from "@heroicons/vue/outline";
 import { inject, ref } from "vue";
-import { PostService } from "@/services/PostService";
+import type { PostService } from "@/services/PostService";
 import { AuthStore } from "@/stores/auth.store";
-
 
 const postService = inject<PostService>("postService");
 const authStore = AuthStore();
@@ -134,7 +133,9 @@ function submitPost() {
 }
 
 function onFileSelected(event: Event) {
-  photo = event?.target?.files[0];
+  const target = event.target as HTMLInputElement;
+  if(target.files)
+    photo = target?.files[0];
 }
 </script>
 
